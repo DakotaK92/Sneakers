@@ -1,16 +1,20 @@
-"use client"
-
-import { useDispatch, useSelector } from "react-redux"
-import type { RootState } from "../lib/store"
-import { increment } from "../lib/features/counterSlice"
+import ProductGallery from "../components/ProductGallery"
+import ProductInfo from "../components/ProductInfo"
 
 export default function Home() {
-  const count = useSelector((state: RootState) => state.counter.value)
-  const dispatch = useDispatch()
-
   return (
-    <button onClick={() => dispatch(increment())}>
-      Count: {count}
-    </button>
+    <main className="min-h-screen bg-white">
+      <section className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Left */}
+        <div>
+          <ProductGallery />
+        </div>
+
+        {/* Right */}
+        <div>
+          <ProductInfo />
+        </div>
+      </section>
+    </main>
   )
 }
