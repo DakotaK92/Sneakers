@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css"
 import { ReduxProvider } from "../lib/providers"
 import { Kumbh_Sans } from "next/font/google";
+import Header from "../components/Header";
 
 const kumbhSans = Kumbh_Sans({
   subsets: ["latin"],
@@ -22,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={kumbhSans.variable}>
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <Header />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   )
