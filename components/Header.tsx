@@ -3,8 +3,8 @@
 import Image from "next/image"
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import type { RootState } from "../lib/store"
-import Cart from "./Cart"
+import type { RootState } from "../store/store"
+import CartDropdown from "./CartDropdown"
 
 const navItems = ["Collections", "Men", "Women", "About", "Contact"]
 
@@ -12,7 +12,6 @@ export default function Header() {
   const [active, setActive] = useState("Collections")
   const [isCartOpen, setIsCartOpen] = useState(false)
 
-  // 🔢 total items in cart
   const cartCount = useSelector((state: RootState) =>
     state.cart.items.reduce(
       (sum, item) => sum + item.quantity,
@@ -40,8 +39,8 @@ export default function Header() {
               className={`px-4 py-2 border-b-2 transition-colors cursor-pointer font-medium
                 ${
                   active === item
-                    ? "border-amber-600 text-black"
-                    : "border-transparent hover:border-amber-600 text-gray-500"
+                    ? "border-amber-500 text-black"
+                    : "border-transparent hover:border-amber-500 text-gray-500"
                 }
               `}
             >
@@ -55,7 +54,7 @@ export default function Header() {
           
           {/* Cart button */}
           <button
-            onClick={() => setIsCartOpen((prev) => !prev)}
+            onClick={() => setIsCartOpen(prev => !prev)}
             className="relative"
           >
             <Image
@@ -65,7 +64,6 @@ export default function Header() {
               height={22}
             />
 
-            {/* Badge */}
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-3 bg-orange-500 text-white text-xs font-bold px-2 rounded-full">
                 {cartCount}
@@ -74,7 +72,7 @@ export default function Header() {
           </button>
 
           {/* Cart dropdown */}
-          {isCartOpen && <Cart />}
+          {isCartOpen && <CartDropdown />}
 
           {/* Avatar */}
           <Image
