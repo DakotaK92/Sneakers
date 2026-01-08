@@ -11,9 +11,12 @@ const kumbhSans = Kumbh_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Shoe E-commerce App",
+  title: "Sneakers - Wear Your Style",
   description:
     "A simple e-commerce application for shoes built using the Redux Toolkit. You can view shoes, add them to your cart, and manage your cart items seamlessly.",
+  icons: {
+    icon: "/app/favicon.ico",
+  },
 }
 
 export default function RootLayout({

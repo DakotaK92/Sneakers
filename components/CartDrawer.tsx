@@ -10,9 +10,11 @@ import type { RootState } from "../store/store"
 
 export default function CartDrawer() {
   const dispatch = useDispatch()
-  const { items, isOpen } = useSelector((state: RootState) => state.cart)
+  const cart = useSelector((state: RootState) => state.cart)
 
-  if (!isOpen) return null
+  if (!cart.isOpen) return null
+
+  const { items } = cart
 
   return (
     <div className="fixed right-0 top-0 w-80 h-full bg-white shadow-lg p-4 z-50">
