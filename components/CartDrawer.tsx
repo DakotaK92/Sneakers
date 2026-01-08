@@ -1,6 +1,7 @@
 "use client"
 
 import { useDispatch, useSelector } from "react-redux"
+import { useEffect, useRef, useState } from "react"
 import {
   increaseQuantity,
   decreaseQuantity,
@@ -10,14 +11,29 @@ import type { RootState } from "../store/store"
 
 export default function CartDrawer() {
   const dispatch = useDispatch()
-  const cart = useSelector((state: RootState) => state.cart)
+  const items = useSelector((state: RootState) => state.cart.items)
+  const [isOpen, setIsOpen] = useState(false)
+  const drawerRef = useRef<HTMLDivElement>(null)
 
-  if (!cart.isOpen) return null
+  // Close on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
+        setIsOpen(false)
+      }
+    }
 
-  const { items } = cart
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [isOpen])
+
+  if (!isOpen) return null
 
   return (
-    <div className="fixed right-0 top-0 w-80 h-full bg-white shadow-lg p-4 z-50">
+    <div
+      ref={drawerRef}
+      className="fixed right-0 top-0 w-80 h-full bg-white shadow-lg p-4 z-50"
+    >
       <h2 className="text-lg font-bold mb-4">Your Cart</h2>
 
       {items.length === 0 && (
@@ -34,25 +50,12 @@ export default function CartDrawer() {
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => dispatch(decreaseQuantity(item.id))}
-              className="px-2 py-1 border rounded"
-            >
-              −
-            </button>
-
+            <button onClick={() => dispatch(decreaseQuantity(item.id))}>−</button>
             <span>{item.quantity}</span>
-
-            <button
-              onClick={() => dispatch(increaseQuantity(item.id))}
-              className="px-2 py-1 border rounded"
-            >
-              +
-            </button>
-
+            <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
             <button
               onClick={() => dispatch(removeFromCart(item.id))}
-              className="ml-2 text-red-500 text-sm"
+              className="text-red-500 text-sm"
             >
               Remove
             </button>
