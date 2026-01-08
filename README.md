@@ -12,6 +12,6 @@ Download the code and open your terminal or git bash. Run `npm install` to insta
 ## Usage
 This site is also live and [deployed on Vercel](https://sneakers-sage-chi.vercel.app/).
 
-![Homescreen for users](/screenshots/Homepage.png)
+![Homepage for users](../my-app/public/screenshots/Homepage.png)
 
-![View of items being added to cart](/screenshots/Cart.png)
+![View of items being added to cart](../my-app/public/screenshots/Cart.png)
