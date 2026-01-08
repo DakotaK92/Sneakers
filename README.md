@@ -1,4 +1,4 @@
-# Sneakers | Redux Project
+a# Sneakers | Redux Project
 
 ## Description
 This is a project to add an item to a cart and remove it using redux, nextjs and tailwind css.
@@ -12,6 +12,6 @@ Download the code and open your terminal or git bash. Run `npm install` to insta
 ## Usage
 This site is also live and [deployed on Vercel](https://sneakers-sage-chi.vercel.app/).
 
-![Homepage for users](../my-app/public/screenshots/Homepage.png)
+<img width="1856" height="911" alt="homepage" src="https://github.com/user-attachments/assets/f2f2d9f5-d671-41a2-8ad3-2c980d4db5d4" />
 
-![View of items being added to cart](../my-app/public/screenshots/Cart.png)
+<img width="1855" height="909" alt="Cart" src="https://github.com/user-attachments/assets/e42db660-fc57-484e-a972-c3c95dbda56b" />
