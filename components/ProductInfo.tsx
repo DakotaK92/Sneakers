@@ -7,7 +7,7 @@ import { addToCart } from "../store/cartSlice"
 
 export default function ProductInfo() {
   const dispatch = useDispatch()
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   const handleAddToCart = () => {
     if (quantity === 0) return
@@ -22,8 +22,7 @@ export default function ProductInfo() {
       })
     )
 
-    // optional: reset quantity after adding
-    setQuantity(0)
+    setQuantity(1)
   }
 
   return (
